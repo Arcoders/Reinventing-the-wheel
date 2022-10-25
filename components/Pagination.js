@@ -35,7 +35,7 @@ const Pagination = ({
   
     return (
         <List.Container>
-          <List.Navigate onClick={prevPage}>&lsaquo;</List.Navigate>
+          <List.Navigate onClick={prevPage} hide={currentPage === 1}>&lsaquo;</List.Navigate>
           {currentNumbers.map((number) => (
             <List.Item key={number} onClick={() => setCurrentPage(number)} active={number === currentPage}>{number}</List.Item>
           ))}
@@ -45,7 +45,7 @@ const Pagination = ({
               <List.Item onClick={() => setCurrentPage(totalPages)}>{totalPages}</List.Item>
             </>
           )}
-          <List.Navigate onClick={nextPage}>&rsaquo;</List.Navigate>
+          <List.Navigate onClick={nextPage} hide={currentPage === totalPages}>&rsaquo;</List.Navigate>
         </List.Container>
     );
   };

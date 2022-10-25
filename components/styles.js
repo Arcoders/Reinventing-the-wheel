@@ -16,6 +16,7 @@ export const List = {
     font-weight: bold;
     padding: 4px;
     font-size: 30px;
+    ${(props) => props.hide && 'display: none'};
   `,
 };
 
