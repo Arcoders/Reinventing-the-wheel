@@ -33,18 +33,6 @@ export const Modal = {
     z-index: 200;
     background-color: rgba(56, 55, 55, 0.8);
   `,
-  Container: StyledComponent.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 200;
-    background-color: rgba(56, 55, 55, 0.8);
-  `,
   Content: StyledComponent.div`
     display: flex;
     position: relative;
@@ -57,6 +45,7 @@ export const Modal = {
     min-width: 100%;
     color: white;
     max-width: 90%;
+    transition: all .5s ease-in-out;
   `,
 };
 

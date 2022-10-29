@@ -32,14 +32,22 @@ const Pagination = ({
     const prevPage = () => currentPage > 1 && setCurrentPage(currentPage - 1);
   
     const currentNumbers = getPaginationNumbers();
+    const isInInicialRange = currentPage >= paginationPagesPerSide * 2;
+    const isInLastRange = totalPages !== currentPage;
   
     return (
         <List.Container>
           <List.Navigate onClick={prevPage} hide={currentPage === 1}>&lsaquo;</List.Navigate>
+          {isInInicialRange && (
+            <>
+              <List.Item onClick={() => setCurrentPage(1)}>1</List.Item>
+              <List.Item>...</List.Item>
+            </>
+          )}
           {currentNumbers.map((number) => (
             <List.Item key={number} onClick={() => setCurrentPage(number)} active={number === currentPage}>{number}</List.Item>
           ))}
-          {totalPages !== currentPage && (
+          {isInLastRange && (
             <>
               <List.Item>...</List.Item>
               <List.Item onClick={() => setCurrentPage(totalPages)}>{totalPages}</List.Item>
