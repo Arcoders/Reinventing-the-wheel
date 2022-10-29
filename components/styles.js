@@ -8,7 +8,7 @@ export const List = {
   Item: StyledComponent.li`
     padding: 15px;
     cursor: pointer;
-    color: ${(props) => (props.active ? 'black' : '#414345')};
+    color: ${(props) => (props.active ? 'black' : props.brand.primary)};
     ${(props) => props.active && 'text-decoration: overline'};
   `,
   Navigate: StyledComponent.li`
@@ -52,7 +52,7 @@ export const Modal = {
 export const Character = {
   Container: StyledComponent.div`
     border-radius: 10px;
-    background-color: #414345;
+    background-color: ${props => props.brand.primary};
     padding: 15px;
     width: 170px;
     cursor: pointer;
@@ -122,7 +122,7 @@ export const Info = {
     padding-bottom: 25px;
   `,
   Location: StyledComponent.p`
-    color: #a7a7a7;
+    color: ${props => props.brand.primary};
     font-family: sans-serif;
     font-style: normal;
     font-weight: 400;
