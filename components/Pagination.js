@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { FIRST_PAGE, PAGES_PER_SIDE } from '../constants';
 import { List } from './styles';
 
 const Pagination = ({
     totalPages,
     handleOnPageChange,
-    activePage = 1,
-    paginationPagesPerSide = 2,
+    activePage = FIRST_PAGE,
+    pagesPerSide = PAGES_PER_SIDE,
   }) => {
     const [currentPage, setCurrentPage] = useState(activePage)
   
@@ -21,26 +22,26 @@ const Pagination = ({
     };
   
     const getPagesPerSide = () => {
-      let prevPages = currentPage - paginationPagesPerSide;
-      let nextPages = currentPage + paginationPagesPerSide;
-      if (prevPages <= 0) prevPages = 1;
+      let prevPages = currentPage - pagesPerSide;
+      let nextPages = currentPage + pagesPerSide;
+      if (prevPages <= 0) prevPages = FIRST_PAGE;
       if (nextPages > totalPages) nextPages = totalPages;
       return { nextPages, prevPages };
     };
   
     const nextPage = () => currentPage < totalPages && setCurrentPage(currentPage + 1);
-    const prevPage = () => currentPage > 1 && setCurrentPage(currentPage - 1);
+    const prevPage = () => currentPage > FIRST_PAGE && setCurrentPage(currentPage - 1);
   
     const currentNumbers = getPaginationNumbers();
-    const isInInicialRange = currentPage >= paginationPagesPerSide * 2;
+    const isInInicialRange = currentPage >= pagesPerSide * PAGES_PER_SIDE;
     const isInLastRange = totalPages !== currentPage;
   
     return (
         <List.Container>
-          <List.Navigate onClick={prevPage} hide={currentPage === 1}>&lsaquo;</List.Navigate>
+          <List.Navigate onClick={prevPage} hide={currentPage === FIRST_PAGE}>&lsaquo;</List.Navigate>
           {isInInicialRange && (
             <>
-              <List.Item onClick={() => setCurrentPage(1)}>1</List.Item>
+              <List.Item onClick={() => setCurrentPage(FIRST_PAGE)}>{FIRST_PAGE}</List.Item>
               <List.Item>...</List.Item>
             </>
           )}
