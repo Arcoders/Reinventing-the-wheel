@@ -17,7 +17,7 @@ const Pagination = ({
     const getPaginationNumbers = () => {
       const { nextPages, prevPages } = getPagesPerSide();
       const numbers = [];
-      for (let number = prevPages; number <= nextPages; number++) numbers.push(number);
+      for (let number = prevPages; number <= nextPages; number++) if (number !== totalPages) numbers.push(number);
       return numbers;
     };
   
